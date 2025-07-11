@@ -233,3 +233,104 @@ document.querySelectorAll('.toggle-btn').forEach(button => {
   });
 });
  
+// feedback 
+// SwiperJS Carousel
+ // Highlight image on hover
+ 
+ 
+const coverflow = document.getElementById("coverflow");
+const coverImages = document.querySelectorAll(".cover-img");
+
+coverImages.forEach((img) => {
+  img.addEventListener("mouseenter", () => {
+    coverImages.forEach((el) => el.classList.remove("active"));
+    img.classList.add("active");
+
+    // Scroll to keep the image fully visible
+    const parentRect = coverflow.getBoundingClientRect();
+    const imgRect = img.getBoundingClientRect();
+
+    if (imgRect.left < parentRect.left || imgRect.right > parentRect.right) {
+      const scrollLeft = img.offsetLeft - (coverflow.offsetWidth / 2) + (img.offsetWidth / 2);
+      coverflow.scrollTo({ left: scrollLeft, behavior: "smooth" });
+    }
+  });
+});
+ 
+const stars = document.querySelectorAll("#starRating i");
+const ratingInput = document.getElementById("rating");
+
+ 
+stars.forEach((star, index) => {
+  star.addEventListener("mouseenter", () => {
+    stars.forEach((s, i) => {
+      s.classList.toggle("hovered", i <= index);
+    });
+  });
+
+  star.addEventListener("mouseleave", () => {
+    stars.forEach((s) => s.classList.remove("hovered"));
+  });
+
+  star.addEventListener("click", () => {
+    stars.forEach((s, i) => {
+      s.classList.toggle("selected", i <= index);
+    });
+    ratingInput.value = index + 1;
+  });
+});
+ 
+document.getElementById("feedbackForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nameInput = document.getElementById("name");
+  const thankYou = document.getElementById("thankYou");
+
+ 
+  document.querySelectorAll(".error-message").forEach(el => el.remove());
+
+  let valid = true;
+
+ 
+  const enteredName = nameInput.value.trim().toLowerCase();
+  const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+ 
+  if (!enteredName) {
+    const error = document.createElement("div");
+    error.className = "text-danger error-message mt-1";
+    error.textContent = "Please enter your name.";
+    nameInput.parentNode.appendChild(error);
+    valid = false;
+  } else if (!registeredUsers.includes(enteredName)) {
+    const error = document.createElement("div");
+    error.className = "text-danger error-message mt-1";
+    error.innerHTML = `This name is not registered. Please <a href="#login" class="text-rose fw-bold text-decoration-underline">sign in</a> first.`;
+    nameInput.parentNode.appendChild(error);
+    valid = false;
+  }
+
+ 
+  if (ratingInput.value === "") {
+    const error = document.createElement("div");
+    error.className = "text-danger error-message mt-1";
+    error.textContent = "Please select a rating ⭐";
+    document.getElementById("starRating").parentNode.appendChild(error);
+    valid = false;
+  }
+ 
+  if (!valid) return;
+
+ 
+  thankYou.style.display = "block";
+
+ 
+  this.reset();
+  ratingInput.value = "";
+  stars.forEach((star) => star.classList.remove("selected", "hovered"));
+
+ 
+  setTimeout(() => {
+    thankYou.style.display = "none";
+  }, 3000);
+});

@@ -143,3 +143,21 @@
     width: 80% !important;
   }
 }
+/*feedback*/
+@media (max-width: 768px) {
+  .custom-coverflow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cover-img {
+    max-width: 180px !important;
+    height: auto !important;
+  }
+
+  .cover-img.active,
+  .cover-img:hover {
+    width: 220px !important;
+    height: auto !important;
+  }
+}
