@@ -5,8 +5,6 @@ html {
   
 }
 
- 
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -36,7 +34,7 @@ html {
   z-index: 9999;
 }
 
-/* شكل السبنر */
+ 
 .spinner {
   border: 5px solid #f3f3f3;
   border-top: 5px solid pink;
@@ -241,8 +239,8 @@ html {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3); /* تغبيش خفيف */
-  backdrop-filter: blur(5px);           /*  تغبيش الخلفية */
+  background-color: rgba(0, 0, 0, 0.3);  
+  backdrop-filter: blur(5px);           
   display: flex;
   align-items: center;
   justify-content: center;
@@ -438,7 +436,7 @@ select:-webkit-autofill {
   margin-left: 30px;
   width: 50%;
   margin-top: 80px;
-  padding-left: 6rem; /* يبعد شوي عن الحفة اليسرى */
+  padding-left: 6rem;  
   animation: fadeIn 1s ease forwards;
 }
 
@@ -473,9 +471,9 @@ select:-webkit-autofill {
 
 .order-image-link {
   display: flex;
-  justify-content: center; /* تخلي الصورة تبدأ من اليسار */
-  margin-left: -10rem; /* تزيح شوي عن اليسار */
-  margin-top: -1.5rem; /* تقلل المسافة من الأعلى */
+  justify-content: center;  
+  margin-left: -10rem;  
+  margin-top: -1.5rem;  
   animation: slideIn 0.4s ease forwards;
   animation-delay: 0.6s;
   opacity: 0;
@@ -487,12 +485,12 @@ select:-webkit-autofill {
 }
 
 .order-image {
-  width: 250px; /* حجم مناسب للصورة */
+  width: 250px;  
   height: auto;
   max-width: 100%;
 }
 
-/* إذا الصورة داخل hero section يمين */
+ 
 .hero-image-container {
   width: 50%;
   overflow: hidden;
@@ -532,4 +530,160 @@ select:-webkit-autofill {
 /*     تتحرك Order Now فقط */
 .order-image {
   animation: wiggle 2s infinite ease-in-out;
+}
+/*about us*/
+/* Custom Text Colors */
+.text-rose {
+  color: #8b3e57 ;
+}
+.text-mint {
+  color:#8b3e57   ;
+}
+.text-gold {
+  color:#8b3e57 ;
+}
+.section-title {
+  font-family:cursive;
+  font-size: 2rem;
+}
+
+.paragraph-style {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-family: 'Nunito', sans-serif;
+  color: #444;
+}
+.why-list li {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  margin-left: 3rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Custom Buttons */
+.magic-btn {
+  background: linear-gradient(to right, #e094a1, #ffe0e5);
+  color:#8b3e57 ;
+  padding: 10px 25px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(217, 79, 112, 0.3);
+  font-family: monospace;
+}
+.magic-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #ff7b9c, #ffc4d6);
+  box-shadow: 0 6px 16px rgba(217, 79, 112, 0.5);
+}
+
+/* Outline Button */
+.btn-outline-rose {
+  border: 1px solid #d94f70;
+  color: #d94f70;
+  transition: all 0.3s ease;
+}
+.btn-outline-rose:hover {
+  background-color: #d94f70;
+  color: white;
+}
+/* CSS */
+.buttons-wrapper {
+  text-align: center; /* لمركزية المحتوى */
+  margin-top: 40px;
+}
+
+.top-buttons {
+  display: inline-flex; /* جنب بعض بدون تعب */
+  gap: 20px; /* فراغ بينهم */
+}
+
+.bottom-button {
+  margin-top: 25px; /* فراغ فوق الزر الثالث */
+}
+
+ /*founders*/ 
+ 
+
+  .double-card-wrapper {
+    perspective: 1000px;
+    height: 240px;
+    /* margin-bottom: 80px; حتى ما توصل الصورة للعنوان */
+  }
+
+  .double-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .card-under {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #f2dbe0; 
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15),
+                0 4px 10px rgba(233, 140, 169, 0.2);
+    top: 15px;
+    left: 0;
+    z-index: 1;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .card-under .inner-content {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s;
+  }
+
+  .card-top {
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    top: 0;
+    z-index: 2;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-left: 30px;
+   
+  }
+
+  .card-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+  }
+
+  .double-card-wrapper:hover .card-top {
+    transform: translateY(-60%);
+  }
+
+  .double-card-wrapper:hover .card-under .inner-content {
+    opacity: 1;
+  }
+ 
+/* Separator Between Sections */
+section hr {
+  border: none;
+  height: 1px;
+  background-color: #f0e0e6;
+  margin: 20px 0;
+  
+}
+
+/* Team Image Styling */
+.team-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin: 0 auto 15px;
 }

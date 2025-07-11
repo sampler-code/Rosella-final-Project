@@ -204,3 +204,15 @@ document.addEventListener("click", function (e) {
     }
   });
 });
+// about us 
+function scrollToSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+// Go to another page
+function goToPage(url) {
+  window.location.href = url;
+}
