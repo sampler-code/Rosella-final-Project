@@ -148,7 +148,7 @@
 </div>
 <body>
     <main>
- <main>
+ 
         <!-- hero section  -->
         <section id="home" class="hero-section" >
         <div class="hero-content">
@@ -483,6 +483,148 @@
 
   </div>
 </section>
+<!-- log in section  -->
+  <section  id="login" class="auth-section " >
+ 
+     <div class="tab-buttons">
+  <span class="tab-link active" id="login-tab">Sign Up</span>
+  <span class="tab-link" id="signin-tab">Sign in </span>
+</div>
+
+  
+
+  <div class="cards-slider">
+    <form id="login-form" class="card-slide active" novalidate style="font-size: 15px;"> 
+ <p class="switch-message" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
+  Already have an account? 
+  <button type="button" id="go-to-signin" class="switch-link btn-link-style">Sign In</button>
+</p>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-control" required />
+           <div id="name-error" class="text-danger small mt-1"></div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Last Name</label>
+          <input type="text" class="form-control" required />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" id="login-email" required />
+        <div class="error text-danger small mt-1" id="login-email-error"></div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" id="login-password" required />
+        <div class="error text-danger small mt-1" id="login-password-error"></div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="confirm-password" required />
+        <div class="error text-danger small mt-1" id="confirm-password-error"></div>
+      </div>
+       <button type="submit" class="btn custom-submit-btn mt-3 px-4 py-2">Sign up </button>
+
+      <div class="success-message text-success mt-2" id="login-success"></div>
+    </form>
+
+    <form id="signin-form" class="card-slide secondary signin" novalidate>
+      
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" id="signin-email" required />
+        <div class="error text-danger small mt-1" id="signin-email-error"></div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" id="signin-password" required  />
+        <div class="error text-danger small mt-1" id="signin-password-error"></div>
+      </div>
+      <div class="mb-3 text-end">
+        <a href="#" class="forgot-link text-decoration-none" style="color:#cc7b87">Forgot password?</a>
+      </div>
+       <button type="submit" class="btn custom-submit-btn mt-3 px-4 py-2">Sign  In</button>
+
+      <div class="success-message text-success mt-2" id="signin-success"></div>
+    </form>
+  </div>
+</section>
+<!-- contact  -->
+
+  <section  id="contact" class="py-5" style="background-color: #fdf7f9; ">
+  <div class="container" style="margin-top: -30px;">
+   
+    <div class="mb-4">
+      <h2 class="text-rose fw-bold" style="font-family: cursive; text-align: left;">
+        Get in touch
+      </h2>
+      <p class="text-muted" style="text-align: left; font-family:'Times New Roman', Times, serif; font-size: 22px; margin-left: 8px; ">
+        Want to get in touch? We'd love to hear from you. Here's how you can reach us.
+      </p>
+    </div>
+
+  
+    <div class="row gx-4 gy-4">
+   
+      <div class="col-md-6 d-flex" style="font-size: 17px;">
+        <div class="contact-card flex-fill p-4 rounded shadow d-flex flex-column  " >
+          <div>
+            <h5 class="text-rose fw-bold mb-3"><i class="fa-solid fa-phone   contact-icon me-2"></i> Quick Contact</h5>
+            <p class="mb-3">Need urgent help? Just give us a quick call or WhatsApp message 💬</p>
+             <p>
+  <i class="fa-brands fa-whatsapp  contact-icon  me-2"></i>
+  <a href="tel:+970599123456" class="contact-link text-decoration-none">+970 599 123 456</a>
+</p>
+<p>
+  <i class="fa-brands fa-whatsapp   contact-icon me-2"></i>
+  <a href="tel:+972689989854" class="contact-link text-decoration-none">+972 689 989 854</a>
+</p>
+
+          </div>
+          <div class="mt-5"  style="font-size: 20px;">
+            <h6 class="text-rose fw-bold">Follow Us</h6>
+            <p class="contact-link mb-1"><i class="fa-brands fa-instagram   contact-icon me-2" ></i> rosella.flowers</p>
+            <p class="contact-link mb-1"><i class="fa-brands fa-facebook  contact-icon  me-2"></i> Rosella Flowers</p>
+            <p class="contact-link"><i class="fa-brands fa-tiktok   contact-icon me-2"></i> rosella.flowers</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email Form -->
+      <div class="col-md-6 d-flex">
+        <div class="contact-card flex-fill p-4 rounded shadow d-flex flex-column justify-content-between">
+          <form id="contactForm" class="d-flex flex-column h-100 justify-content-between">
+            <div>
+              <h5 class="text-rose fw-bold mb-3"><i class="fa-solid fa-envelope-open-text  contact-icon  me-2"></i> Email Us</h5>
+              <p class="text-muted mb-3">Got a suggestion, a question, or facing a problem? We'd love to help – just write us below 💬</p>
+              <div class="mb-3">
+                <label class="form-label text-rose">Your Name</label>
+                <input type="text" class="form-control" id="formName" required style="background-color: #fff8f6;">
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-rose">Email Address</label>
+                <input type="email" class="form-control" id="formEmail" required style="background-color: #fff8f6;">
+              </div>
+              <div class="mb-3">
+                <label class="form-label text-rose">Your Message</label>
+                <textarea class="form-control" rows="2" id="formMessage" required style="background-color: #fff8f6;"></textarea>
+              </div>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-rose w-100 ">Send Message</button>
+              <div id="thankYouMessage" class="mt-3 fw-bold text-success" style="display: none;">
+                Thank you for your message! We'll get back to you soon.
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  
     </main>
      <footer class="bg-light border-top mt-auto py-3" style="background-color: #f4ecee !important;">
   <div class="container " max-width: 100%; >

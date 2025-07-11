@@ -334,3 +334,203 @@ document.getElementById("feedbackForm").addEventListener("submit", function (e) 
     thankYou.style.display = "none";
   }, 3000);
 });
+//  log in 
+document.addEventListener("DOMContentLoaded", () => {
+  const loginTab = document.getElementById("login-tab");
+  const signinTab = document.getElementById("signin-tab");
+  const loginForm = document.getElementById("login-form");
+  const signinForm = document.getElementById("signin-form");
+  const goToSignIn = document.getElementById("go-to-signin");
+
+ 
+  let fakeUsers = JSON.parse(localStorage.getItem("fakeUsers")) || [];
+
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function isStrongPassword(password) {
+    return (
+      /[A-Z]/.test(password) &&
+      /[a-z]/.test(password) &&
+      /[0-9]/.test(password) &&
+      /[!@#$%^&*(),.?":{}|<>]/.test(password) &&
+      password.length >= 8
+    );
+  }
+
+  function updateSlider(activeTab) {
+    loginForm.reset();
+    signinForm.reset();
+    document.querySelectorAll(".error").forEach(e => (e.textContent = ""));
+    document.querySelectorAll(".success-message").forEach(e => (e.textContent = ""));
+
+    if (activeTab === "login") {
+      loginTab.classList.add("active");
+      signinTab.classList.remove("active");
+      loginForm.classList.add("active");
+      loginForm.classList.remove("secondary");
+      signinForm.classList.remove("active");
+      signinForm.classList.add("secondary", "signin");
+    } else {
+      signinTab.classList.add("active");
+      loginTab.classList.remove("active");
+      signinForm.classList.add("active");
+      signinForm.classList.remove("secondary");
+      loginForm.classList.remove("active");
+      loginForm.classList.add("secondary");
+      loginForm.classList.remove("signin");
+    }
+  }
+
+  updateSlider("login");
+
+  loginTab.addEventListener("click", () => updateSlider("login"));
+  signinTab.addEventListener("click", () => updateSlider("signin"));
+
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    
+    const firstName = loginForm.querySelectorAll("input[type='text']")[0].value.trim();
+    const lastName = loginForm.querySelectorAll("input[type='text']")[1].value.trim();
+    const fullName = (firstName + " " + lastName).toLowerCase();
+
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+
+ 
+    const nameError = document.getElementById("name-error");
+    const emailError = document.getElementById("login-email-error");
+    const passwordError = document.getElementById("login-password-error");
+    const confirmError = document.getElementById("confirm-password-error");
+    const successMessage = document.getElementById("login-success");
+
+  
+    nameError.textContent = "";
+    emailError.textContent = "";
+    passwordError.textContent = "";
+    confirmError.textContent = "";
+    successMessage.textContent = "";
+
+    
+    let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+
+    let valid = true;
+
+    
+    if (!isValidEmail(email)) {
+      emailError.textContent = "Email format is invalid.";
+      valid = false;
+    }
+
+   
+    if (!isStrongPassword(password)) {
+      passwordError.textContent = "Password must contain uppercase, lowercase, number, symbol and be 8+ characters.";
+      valid = false;
+    }
+
+   
+    if (password !== confirmPassword) {
+      confirmError.textContent = "Passwords do not match.";
+      valid = false;
+    }
+
+   
+    if (registeredUsers.includes(fullName)) {
+      nameError.textContent = "This username is already taken.";
+      valid = false;
+    }
+
+   
+    if (fakeUsers.some(user => user.email.toLowerCase() === email.toLowerCase())) {
+      emailError.textContent = "This email is already registered.";
+      valid = false;
+    }
+
+    
+    if (valid) {
+      registeredUsers.push(fullName);
+      localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+
+      fakeUsers.push({ email, password });
+      localStorage.setItem("fakeUsers", JSON.stringify(fakeUsers));
+
+      successMessage.textContent = "Account created successfully!";
+      loginForm.reset();
+    }
+  });
+
+  signinForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById("signin-email").value.trim();
+    const password = document.getElementById("signin-password").value;
+
+    const emailError = document.getElementById("signin-email-error");
+    const passwordError = document.getElementById("signin-password-error");
+    const successMessage = document.getElementById("signin-success");
+
+    emailError.textContent = "";
+    passwordError.textContent = "";
+    successMessage.textContent = "";
+
+    let valid = true;
+
+    if (!isValidEmail(email)) {
+      emailError.textContent = "Invalid email format.";
+      valid = false;
+    }
+
+    if (password === "") {
+      passwordError.textContent = "Password is required.";
+      valid = false;
+    }
+
+    if (valid) {
+      const userFound = fakeUsers.find(user => user.email.toLowerCase() === email.toLowerCase() && user.password === password);
+
+      if (userFound) {
+        successMessage.textContent = "Signed in successfully!";
+        signinForm.reset();
+      } else {
+        emailError.textContent = "Account not found. Please check email or password.";
+      }
+    }
+  });
+
+  if (goToSignIn) {
+    goToSignIn.addEventListener("click", () => updateSlider("signin"));
+  }
+});
+/* contact*/ 
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  document.getElementById("thankYouMessage").style.display = "block";
+  this.reset();
+  setTimeout(() => {
+    document.getElementById("thankYouMessage").style.display = "none";
+  }, 3000);
+});
+/* ايقونة الحساب*/ 
+document.addEventListener("DOMContentLoaded", function() {
+  const userIcon = document.querySelector('.icon-link[href="#login"]');
+
+  if (userIcon) {
+    userIcon.addEventListener("click", function(e) {
+      e.preventDefault();
+     
+      if (window.location.pathname.includes("products.html")) {
+        window.location.href = "index.html#login";
+      } else {
+       
+        const loginSection = document.getElementById("login");
+        if (loginSection) {
+          loginSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+  }
+});

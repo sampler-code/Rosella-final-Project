@@ -1077,3 +1077,273 @@ textarea.form-control:valid {
   background-color: #fff8f6 !important;
   box-shadow: none !important;
 }
+/* log in */ 
+
+ .btn-link-style {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: #cc7b87;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.btn-link-style:hover {
+  color: #b35f6a;
+}
+
+ .auth-section {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  min-height: 600px;
+  padding-top: 60px;
+  z-index: 1;
+}
+
+.auth-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../imgs/log-in-background.png');
+  background-repeat: repeat;
+  animation: fall 20s linear infinite;
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% { background-position: 0 -1000px; }
+  100% { background-position: 0 1000px; }
+}
+.switch-message {
+  font-size: 1rem;
+  color: #a54f60; 
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.switch-message .switch-link {
+  color: #cc7b87;  
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.switch-message .switch-link:hover {
+  color: #d9a066;  
+}
+
+
+
+.tab-buttons {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+  z-index: 20;
+}
+
+.tab-link {
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #cc7b87;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+  font-family: cursive;
+}
+
+.tab-link:hover {
+  text-decoration: underline;
+  color: #b83280;
+}
+
+.tab-link.active {
+  color: #b83280 ;
+  text-decoration: underline;
+}
+
+.cards-slider {
+  position: relative;
+  width: 100%;
+  height: 534px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.card-slide {
+  position: relative;
+  background: rgba(237, 222, 222, 0.15);
+  border-radius: 2rem;
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 8px rgba(236, 214, 217, 0.5);
+  width: 36vw;
+  max-width: 440px;
+  height: 100%;
+  padding: 1.8rem;
+  transition: all 0.7s ease;
+  overflow-y: visible;
+  z-index: 5;
+}
+
+.card-slide.active {
+  width: 45vw;
+  max-width: 520px;
+  opacity: 1;
+  z-index: 20;
+  filter: none;
+  transform: translateX(0) scale(1);
+  box-shadow: 0 0 10px rgba(215, 168, 192, 0.95);
+}
+
+.card-slide.secondary {
+  width: 42vw;
+  opacity: 0.6;
+  filter: blur(0.4px);
+  transform: translateX(40%) scale(0.95);
+  z-index: 10;
+  pointer-events: none;
+  -webkit-transform: translateX(40%) scale(0.95);
+  -moz-transform: translateX(40%) scale(0.95);
+  -ms-transform: translateX(40%) scale(0.95);
+  -o-transform: translateX(40%) scale(0.95);
+}
+
+.card-slide.secondary.signin {
+  transform: translateX(-55%) scale(0.95);
+}
+ .card-slide.active label {
+  color: #b83280;   
+  font-weight: 600;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+.card-slide.secondary label {
+  color: #e6b9c4;  
+   
+ font-family: 'Times New Roman', Times, serif;
+}
+
+
+input.form-control:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 0.2rem rgba(184, 50, 128, 0.25) !important;  
+  border-color: #b83280 !important;  
+}
+textarea.form-control:hover {
+  border-color: #e91e63 !important;  
+       /* نفس لون الفوكس */
+     box-shadow:0 0 0 0.2rem rgba(184, 50, 128, 0.25) !important ;
+}
+.custom-submit-btn {
+  background-color: #b83280;   
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: fit-content;
+  align-self: center;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(184, 50, 128, 0.3);
+}
+
+
+ .custom-submit-btn:hover {
+  background-color:  #e6b9c4; 
+  color:  #b83280; 
+  box-shadow: 0 6px 15px rgba(196, 120, 158, 0.4);
+}
+ 
+.card-slide.secondary .custom-submit-btn   {
+  background-color: #e6b9c4;  
+}
+.success-message {
+  color: #cc7b87 !important;
+}
+
+.error {
+  color: #d7203c !important;
+}
+/*contact US*/
+ 
+.contact-card {
+  background-color: #fff8f6;
+  height: 100%;
+}
+
+/* Text Colors */
+.text-rose {
+  color: #8b3e57 !important;
+}
+
+.text-gold {
+  color: #d4af37 !important;
+}
+
+/* Button */
+.btn-rose {
+  background-color: #8b3e57;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-rose:hover {
+  background-color: #d4af37;
+  color: white;
+}
+
+/* Hover effect on links */
+.contact-link {
+  color: #8b3e57;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+.contact-link:hover {
+  color: #d4af37;
+}
+ 
+#contactForm .form-control,
+#contactForm textarea {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+}
+
+#contactForm .mb-3 {
+  margin-bottom: 0.8rem;
+}
+
+ 
+#contactForm p.text-muted {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+.contact-icon {
+  color: #cc7b87;
+  transition: color 0.3s ease;
+}
+
+.contact-icon:hover {
+  color: #d4af37;
+}
