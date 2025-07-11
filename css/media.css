@@ -232,3 +232,169 @@
     padding: 10px 15px;
   }
 }
+/* products */
+ 
+@media (max-width: 999px) {
+  #productsGrid .col-md-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding: 0.5rem;
+  }
+
+  #productsGrid .card img {
+    height: 260px;
+    object-fit: cover;
+  }
+}
+
+/* للموبايل */
+@media (max-width: 768px) {
+  #productsGrid .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  #productsGrid .card img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  #productsGrid .card {
+    text-align: center;
+  }
+
+  #productsGrid input,
+  #productsGrid button {
+    width: auto;
+    margin: 0.25rem;
+  }
+
+  #productsGrid .d-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .sidebar {
+    top: 150px; /* تأكد انه تحت الهيدر */
+    height: calc(100% - 110px); /* يضبط ارتفاعه */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    top: 100px; /* ازيد شوي */
+    height: calc(100% - 100px);
+  }
+}
+@media (max-width: 992px) {
+  #vasesGrid .col-md-2 {
+    flex: 1 1 160px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  #vasesGrid .col-md-2 {
+    flex: 1 1 140px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  #vasesGrid .col-md-2 {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+/* ميديا كويري لأجهزة أصغر */
+@media (max-width: 768px) {
+  .bouquet-img {
+    height: 180px;
+  }
+  .qty-input {
+    width: 50px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .bouquet-img {
+    height: 160px;
+  }
+  .qty-input {
+    width: 45px;
+    font-size: 0.8rem;
+  }
+}
+/*مناسبات*/
+@media(max-width: 992px){
+  #occasion-gifts img {
+    height: 180px;
+  }
+}
+@media(max-width: 768px){
+  #occasion-gifts img {
+    height: 160px;
+  }
+}
+@media(max-width: 576px){
+  #occasion-gifts img {
+    height: 140px;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* col-md-2 = 6 أعمدة */
+  .col-md-2 {
+    flex: 0 0 16.6667%;
+    max-width: 16.6667%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* 4 أعمدة */
+  .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  /* override col-md-2 في هذه الحالة */
+  #wedding-services > .col-md-2,
+  #bride-services > .col-md-2,
+  #birthday-services > .col-md-2,
+  #graduation-services > .col-md-2 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 991.98px) {
+  /* 2 أعمدة */
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  #wedding-services > .col-md-2,
+  #bride-services > .col-md-2,
+  #birthday-services > .col-md-2,
+  #graduation-services > .col-md-2 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* 1 عمود */
+  .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  #wedding-services > .col-md-2,
+  #bride-services > .col-md-2,
+  #birthday-services > .col-md-2,
+  #graduation-services > .col-md-2 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

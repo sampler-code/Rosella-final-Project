@@ -160,3 +160,86 @@
     <p>Your cart is empty.</p>
   </div>
 </div>
+<main>
+ 
+
+ <section class="container py-5">
+  <h2 class="text-center mb-4 text-rose fw-bold" style="font-family: cursive;">
+    Single Stems
+  </h2>
+  <div class="row" id="productsGrid"></div>
+</section>
+<!--  home vases  -->
+ <section class="py-5" id="home-vases">
+  <div class="container">
+    <h2 class="text-center mb-5  text-rose fw-bold" style="font-family: cursive;">Home Flower Vases</h2>
+    <div id="vasesGrid"></div>
+  </div>
+</section>
+<!-- ready bouquets -->
+ <section class="py-5" id="ready-bouquets">
+  <div class="container">
+    <h2 class="text-center mb-5 text-rose fw-bold" style="font-family: cursive;">
+      Ready Bouquets
+    </h2>
+    <div class="row" id="readyGrid"></div>
+  </div>
+</section>
+<section class="py-5" id="occasion-gifts">
+  <div class="container">
+    <h2 class="text-center mb-5 text-rose fw-bold" style="font-family: cursive;">
+      Occasion Flower Gifts
+    </h2>
+    <div id="occasionGrid"></div>
+  </div>
+</section>
+<section id="onSaleSection" class="container my-5" style="font-family:cursive ; text-align: center;">
+  <h3 class="text-rose mb-4">On Sale Items</h3>
+  <div id="onSaleGrid" class="row"></div>
+</section>
+
+
+   </main>
+
+ <script>
+document.addEventListener("DOMContentLoaded", function() {
+ 
+  const navLinks = document.querySelectorAll('.main-nav .nav-link');
+ 
+      navLinks.forEach(link => {
+     link.classList.remove('active');
+    link.style.color = "";
+    link.style.textDecoration = "none";
+    link.style.borderBottom = "none";
+  });
+
+ 
+  const shopLink = document.querySelector('#shopToggle');
+  if (shopLink) {
+    shopLink.classList.add('active');
+     shopLink.style.textDecoration = "none";
+    shopLink.style.borderBottom = "none";
+
+   
+    const productLabel = document.createElement('span');
+    productLabel.textContent = " > Products";
+    productLabel.style.color = "#d4af37";  
+    productLabel.style.fontSize = "0.9rem";
+    productLabel.style.marginLeft = "5px";
+    productLabel.style.textDecoration = "none";
+
+    shopLink.appendChild(productLabel);
+
+    
+    shopLink.style.color = "#d4af37";
+  }
+});
+ AOS.init({
+    duration: 1000, 
+    once: true     
+  });
+ </script>
+
+<script src="js/products.js"></script>
+</body>
+</html>

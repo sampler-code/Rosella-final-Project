@@ -1347,3 +1347,292 @@ textarea.form-control:hover {
 .contact-icon:hover {
   color: #d4af37;
 }
+/*products*/
+  #productsGrid .card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  text-align: center;
+  transition: 0.3s;
+  background-color: #f3d4d40b;
+  height: 100%;
+}
+#productsGrid .card:hover {
+  transform: scale(1.02);
+}
+ .product-image {
+  width: 100%;
+  height: 400px;  
+  object-fit: contain; 
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.color-dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 4px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.color-dot.active, .color-dot:hover {
+  border: 2px solid #b48b65;
+}
+ #home-vases .card {
+   
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255, 240, 245, 0.5); /* زهري شفاف */
+  overflow: hidden;
+}
+
+/* Hover Effect */
+#home-vases .card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(219, 112, 147, 0.3);
+}
+
+ 
+#home-vases .card.active {
+  transform: scale(1.06);
+  box-shadow: 0 10px 25px rgba(219, 112, 147, 0.5);
+}
+
+ 
+#home-vases .card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+ 
+#home-vases .card .d-flex {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+ 
+#home-vases .card input,
+#home-vases .card button {
+  max-width: 100%;
+}
+
+/*  Grid Responsive */
+#vasesGrid .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+#vasesGrid .col-md-2 {
+  flex: 1 1 180px;
+  max-width: 220px;
+}
+#ready-bouquets .card {
+  background-color: #f3d4d40b;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+#ready-bouquets .card:hover {
+  transform: scale(1.05);
+}
+
+#ready-bouquets img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+/* مناسبات */
+ #occasion-gifts .occasion-title {
+  font-family: cursive;
+  font-weight: bold;
+  color: #8b3e57;
+  margin: 30px 0 20px;
+  text-align: center;
+}
+
+#occasion-gifts .card {
+  background-color: #f3d4d40b;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  -webkit-transition: transform 0.3s;
+  -moz-transition: transform 0.3s;
+  -ms-transition: transform 0.3s;
+  -o-transition: transform 0.3s;
+}
+
+#occasion-gifts .card:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+#occasion-gifts img {
+  height: 200px;
+  object-fit: contain;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+/* Sidebar Menu */
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -400px;
+  width: 280px;
+  height: 100%;
+  background: #fff0f5;  
+  border-right: 2px solid #db7093;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 1100;
+  overflow-y: auto;
+}
+
+/* Close Button */
+.sidebar-menu .custom-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #db7093;
+  cursor: pointer;
+}
+
+/* Links Styling */
+.sidebar-menu ul li a {
+  display: block;
+  padding: 8px 0;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #9c4465;
+  transition: color 0.3s;
+}
+
+.sidebar-menu ul li a:hover {
+  color: #6f2a4c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar-menu {
+    width: 240px;
+  }
+}
+ 
+.badge-hot {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e63946;  /* أحمر لامع */
+  color: white;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  box-shadow: 0 0 6px rgba(230, 57, 70, 0.7);
+  z-index: 10;
+  user-select: none;
+}
+ 
+/* checkout */
+ #checkout-page {
+  background: linear-gradient(135deg, #fcefee, #ffe5f0);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#checkout-page .glass-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(255, 182, 193, 0.25);
+  padding: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#checkout-page h2,
+#checkout-page h4,
+#checkout-page h5 {
+  color: #c2185b; /* لون وردي داكن */
+  font-weight: 700;
+}
+
+#checkout-page label {
+  color: #880e4f;
+  font-weight: 600;
+}
+
+#checkout-page .btn-primary {
+  background-color: #c2185b;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+#checkout-page .btn-primary:hover {
+  background-color: #880e4f;
+}
+
+#checkout-page .form-control:focus {
+  border-color: #c2185b;
+  box-shadow: 0 0 8px 0 rgba(194, 24, 91, 0.6);
+}
+
+#checkout-page .order-summary-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 10px;
+  border: 1px solid #ffc1e3;
+}
+
+#checkout-page #confirmation {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #d173a5;
+}
+
+@media (max-width: 767px) {
+  #checkout-page .glass-container {
+    padding: 20px;
+    margin: 20px 15px;
+  }
+}
+ 
+body {
+  animation: fadeSlideIn 1.2s ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
