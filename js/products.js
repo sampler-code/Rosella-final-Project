@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const shareBtn = document.getElementById("share-cart");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", () => {
+      window.location.href = "checkout.html";
+    });
+  }
+});
 
 window.addEventListener("load", function () {
   const loadingScreen = document.getElementById("loading-screen");
@@ -369,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ------------------ add to favorites and cart -------------------------
+// add to favorites and cart  
  function addToFavorites(id, type){
   let item;
   if(type === 'product'){
@@ -464,7 +472,7 @@ function addToCart(id, type) {
     };
   }
 
-  // دمج إذا موجود
+ 
   let existing = cart.find(c => c.id == item.id && c.image == item.image);
   if (existing) {
     existing.quantity += qty;
@@ -726,12 +734,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
- function renderOnSale() {
+
+function renderOnSale() {
   const container = document.getElementById("onSaleGrid");
   if (!container) return;
   container.innerHTML = "";
 
-   
   const priceStyle = `color: #db7093; font-weight: bold;`;
   const oldPriceStyle = `text-decoration: line-through; color: #999; margin-right: 8px;`;
   const discountBadgeStyle = `
@@ -746,16 +754,12 @@ document.addEventListener("DOMContentLoaded", () => {
     font-weight: 700;
   `;
 
-  
   function discountedPrice(price, discount) {
     if (!discount) return price;
     return (price * (1 - discount)).toFixed(2);
   }
 
-  
   const allItems = [];
-
-   
   products.forEach(product => {
     if (product.onSale) {
       const variant = product.colors[0];
@@ -764,13 +768,12 @@ document.addEventListener("DOMContentLoaded", () => {
         name: product.name,
         image: variant.image,
         price: variant.price,
-        discount: product.discount || 0.20,   
+        discount: product.discount || 0.20,
         section: "Product"
       });
     }
   });
 
- 
   vases.filter(v => v.onSale).forEach(vase => {
     allItems.push({
       id: vase.id,
@@ -782,7 +785,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  
   readyBouquets.filter(b => b.onSale).forEach(bq => {
     allItems.push({
       id: bq.id,
@@ -794,7 +796,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  
   Object.values(occasions).flat().filter(item => item.onSale).forEach(item => {
     allItems.push({
       id: item.id,
@@ -806,7 +807,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
- 
   sections.flatMap(s => s.services).filter(service => service.onSale !== false).forEach(service => {
     allItems.push({
       id: service.id,
@@ -818,13 +818,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-   
   allItems.forEach(item => {
     const finalPrice = discountedPrice(item.price, item.discount);
     const discountPercent = Math.round((item.discount || 0) * 100);
     container.innerHTML += `
       <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-        <div class="card position-relative p-3 rounded-4 shadow-sm text-center" style="height: 380px;">
+        <div class="card position-relative p-3 rounded-4 shadow-sm text-center" style="height: 400px;">
           <span style="${discountBadgeStyle}">-${discountPercent}%</span>
           <img src="${item.image}" alt="${item.name}" class="img-fluid rounded-4" style="height: 220px; object-fit: cover; margin-bottom: 10px;">
           <h5>${item.name}</h5>
@@ -833,10 +832,26 @@ document.addEventListener("DOMContentLoaded", () => {
             <span style="${priceStyle}">$${finalPrice}</span>
           </p>
           <small class="text-muted">Category: ${item.section}</small>
+          <div class="mt-2 d-flex justify-content-center gap-3">
+            <button class="btn btn-light border add-to-favorites" 
+              data-id="${item.id}" data-name="${item.name}" 
+              data-image="${item.image}" data-price="${finalPrice}" 
+              data-section="${item.section}">
+              ❤️
+            </button>
+            <button class="btn btn-light border add-to-cart" 
+              data-id="${item.id}" data-name="${item.name}" 
+              data-image="${item.image}" data-price="${finalPrice}" 
+              data-section="${item.section}">
+              🛒
+            </button>
+          </div>
         </div>
       </div>
     `;
   });
+
+  attachSaleButtons(); // تفعيل الأزراير
 }
 
 renderOnSale();
@@ -938,9 +953,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* ايقونة الشير */
-document.getElementById("share-cart").addEventListener("click", () => {
-  window.location.href = "checkout.html";
-});
+ 
 
  

@@ -109,3 +109,226 @@
         </div>
       </div>
     </header>
+     <div id="checkout-page"  style="font-family: cursive;">
+    <div class="container glass-container">
+    <h2 class="mb-4 text-center">Checkout</h2>
+
+    <div class="row g-4">
+      <!-- Form -->
+      <div class="col-lg-6">
+        <form id="checkout-form" novalidate>
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name *</label>
+            <input type="text" class="form-control" id="fullName" required />
+            <div class="invalid-feedback">Please enter your full name.</div>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Address *</label>
+            <textarea class="form-control" id="address" rows="3" required></textarea>
+            <div class="invalid-feedback">Please enter your address.</div>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number *</label>
+            <input type="tel" class="form-control" id="phone" required pattern="^\d{8,15}$" />
+            <div class="invalid-feedback">Please enter a valid phone number (8-15 digits).</div>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Place Order</button>
+        </form>
+        <div id="confirmation" class="alert alert-success mt-4 d-none"></div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="col-lg-6">
+        <h4>Order Summary</h4>
+        <ul id="order-summary" class="list-group mb-3">
+          <!-- هنا تظهر منتجات السلة -->
+        </ul>
+        <h5>Total: <span id="total-price">0.00</span> $</h5>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+ 
+document.addEventListener("DOMContentLoaded", function() {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (currentPage === "checkout.html") {
+    // تحديد جميع الروابط في النافبار
+    const navLinks = document.querySelectorAll('.main-nav .nav-link');
+
+    // إزالة active وأي ستايلات من الكل
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      link.style.color = "";
+      link.style.textDecoration = "none";
+      link.style.borderBottom = "none";
+
+      // إزالة span ذهبي إذا موجود (علشان نمنع تكرار النص)
+      const span = link.querySelector('span.checkout-gold-label');
+      if (span) span.remove();
+    });
+
+    // تفعيل Checkout فقط
+    const checkoutLink = document.querySelector('#checkout-link');
+    if (checkoutLink) {
+      checkoutLink.classList.add('active');
+
+      checkoutLink.style.color = "#d4af37"; // ذهبي
+      checkoutLink.style.textDecoration = "none";
+      checkoutLink.style.borderBottom = "none";
+
+      // إضافة نص ذهبي تحتي (خط ذهبي)
+      // بدل span نستخدم border-bottom (أنسب)
+      checkoutLink.style.borderBottom = "3px solid #d4af37";
+
+    
+    }
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const orderSummary = document.getElementById("order-summary");
+  const totalPriceEl = document.getElementById("total-price");
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  if (cart.length === 0) {
+    orderSummary.innerHTML = "<li class='list-group-item'>Your cart is empty.</li>";
+    totalPriceEl.textContent = "0.00";
+  } else {
+    let total = 0;
+    orderSummary.innerHTML = "";
+
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+
+      const li = document.createElement("li");
+      li.classList.add("list-group-item", "d-flex", "align-items-center", "justify-content-between");
+
+      li.innerHTML = `
+        <div class="d-flex align-items-center">
+          <img src="${item.image}" alt="${item.name}" style="width:50px; height:50px; object-fit:cover; border-radius:6px; margin-right:10px;" />
+          <div>
+            <div>${item.name}</div>
+            <small class="text-muted">Quantity: ${item.quantity}</small>
+          </div>
+        </div>
+        <div><strong>$${itemTotal.toFixed(2)}</strong></div>
+      `;
+
+      orderSummary.appendChild(li);
+    });
+
+    totalPriceEl.textContent = total.toFixed(2);
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const orderSummary = document.getElementById("order-summary");
+  const totalPriceEl = document.getElementById("total-price");
+  const confirmation = document.getElementById("confirmation");
+  const form = document.getElementById("checkout-form");
+  const submitBtn = form.querySelector("button[type='submit']");
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function renderCart() {
+    orderSummary.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      orderSummary.innerHTML = "<li class='list-group-item'>Your cart is empty.</li>";
+      totalPriceEl.textContent = "0.00";
+      submitBtn.disabled = true;
+      return;
+    }
+
+    submitBtn.disabled = false;
+
+    cart.forEach((item, index) => {
+      const price = Number(item.price) || 0;
+      const qty = Number(item.qty || item.quantity) || 0; // دعم كلا الحالتين
+      const itemTotal = price * qty;
+      total += itemTotal;
+
+      const li = document.createElement("li");
+      li.classList.add("list-group-item", "d-flex", "align-items-center", "justify-content-between");
+
+      li.innerHTML = `
+        <div class="d-flex align-items-center gap-2">
+          <img src="${item.image}" alt="item" style="width:60px; height:60px; object-fit:cover; border-radius:8px;">
+          <div>
+            <div>${item.name || "Product"}</div>
+            <small class="text-muted">Quantity: ${qty}</small>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <strong>$${itemTotal.toFixed(2)}</strong>
+          <button type="button" class="btn btn-sm btn-outline-danger remove-item-btn" data-index="${index}" aria-label="Remove item">&times;</button>
+        </div>
+      `;
+
+      orderSummary.appendChild(li);
+    });
+
+    totalPriceEl.textContent = total.toFixed(2);
+  }
+
+  renderCart();
+
+  orderSummary.addEventListener("click", (e) => {
+    if (e.target.classList.contains("remove-item-btn")) {
+      const index = parseInt(e.target.getAttribute("data-index"));
+      if (!isNaN(index)) {
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+      }
+    }
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    form.classList.add("was-validated");
+
+    if (cart.length === 0) {
+      alert("Your cart is empty. Please add products before checkout.");
+      return;
+    }
+
+    if (!form.checkValidity()) {
+      return;
+    }
+
+    confirmation.textContent = "Order sent successfully. We will contact you soon to deliver your order.";
+    confirmation.classList.remove("d-none");
+
+    localStorage.removeItem("cart");
+    cart = [];
+
+    submitBtn.disabled = true;
+    form.querySelectorAll("input, textarea").forEach(input => (input.disabled = true));
+
+    renderCart();
+  });
+});
+ 
+
+// });
+/* ايقونة الشير */
+document.getElementById("share-cart").addEventListener("click", () => {
+  window.location.href = "checkout.html";
+});
+ 
+
+ AOS.init({
+    duration: 1000, // مدة الانيميشن 1 ثانية
+    once: true     // مرة واحدة فقط
+  });
+  </script>
+   <script src="js/products.js">
+    
+   </script>
+</body>
+</html>
