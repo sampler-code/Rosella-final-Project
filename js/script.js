@@ -216,3 +216,20 @@ function scrollToSection(sectionId) {
 function goToPage(url) {
   window.location.href = url;
 }
+/* shopping*/ 
+document.querySelectorAll('.toggle-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const targetId = button.getAttribute('data-target');
+    const targetWrapper = document.getElementById(targetId);
+
+    targetWrapper.classList.toggle('expanded');
+    button.classList.toggle('expanded');
+
+    if (targetWrapper.classList.contains('expanded')) {
+      button.innerHTML = 'Show Less <span class="arrow ms-2" >&#9650;</span>';
+    } else {
+      button.innerHTML = 'Show More <span class="arrow ms-2">&#9660;</span>';
+    }
+  });
+});
+ 

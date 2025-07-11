@@ -687,3 +687,234 @@ section hr {
   object-fit: cover;
   margin: 0 auto 15px;
 }
+/*shopping section */
+.shop-intro h2 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.shop-intro p {
+  font-size: 1.1rem;
+  color: #666;
+}
+#shopToggle i {
+  margin-left: 5px;  
+}
+
+#shop {
+  direction: ltr;
+  font-family:cursive;
+  margin-top: -90px;
+ 
+  transition: all 0.5s ease;
+  overflow:visible;
+}
+
+ 
+
+/* Main card container */
+.main-card-container {
+  position: relative;
+  height:auto;
+  margin-bottom:150px;
+  perspective: 1000px;
+  overflow: visible;
+}
+
+ .main-card-container.expanded {
+  height: 600px;
+}
+
+/* Main card style */
+.main-card {
+  background-color: #ffe6f0;
+  border: 2px solid #f8c7cc;
+  color:#8b3e57  ;
+  border-radius: 20px;
+  padding: 20px 25px;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  cursor: default;
+  user-select: none;
+  position: relative;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.main-card:hover {
+  transform: translateY(-5px);
+}
+
+.main-card .icon {
+  font-size: 28px;
+}
+
+/* Pink styled button */
+.btn-pink {
+  background-color: transparent;
+  border: 2px dashed #e83e8c;
+  color: #e83e8c;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 6px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.btn-pink:hover {
+  background-color: #cc7b87;  
+  color: #fff;
+  border-style: solid;
+}
+
+.arrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+  margin-left: 6px;
+}
+
+.toggle-btn.expanded .arrow {
+  transform: rotate(180deg);
+}
+
+/* Collapsed wrapper for sub-cards */
+  .collapsed-wrapper {
+  position: relative;
+  max-height: 180px;
+  overflow: visible;
+  margin-top: -100px;
+} 
+ 
+
+.collapsed-wrapper .sub-card:nth-child(1) {
+  /* فوق الكود الموجود */
+  filter: brightness(100%) contrast(120%);
+  box-shadow: 0 8px 25px rgba(172, 124, 139, 0.35); /* ظل أكبر */
+}
+
+/* Style for each sub-card stacked */
+.collapsed-wrapper .sub-card {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  border-color: #f5b2c6;
+  opacity: 0.7;
+  top: 0;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 10px rgba(255, 192, 203, 0.25);
+  border-radius: 16px;
+  background-color:f4ecee ;
+  padding: 15px 20px;
+  margin-bottom: 0;
+  text-align: left;
+    box-shadow: 0 4px 20px rgba(196, 131, 152, 0.25); /* ظل أقوى وغامق */
+  filter: brightness(95%) contrast(110%); /* تغميق خفيف مع تباين */
+   transition: all 0.5s ease;
+   
+}
+ .collapsed-wrapper.expanded .sub-card {
+  position: relative !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: auto !important;
+  margin-bottom: 15px;
+  transform: translateY(0);
+}
+ 
+/* تنسيقات h5 و p داخل كروت sub-card */
+.sub-card h5 {
+  color:  #cc7b87;/* وردي غامق */
+  font-family:monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.sub-card p {
+  color: #c58eab;  
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.collapsed-wrapper:not(.expanded) .sub-card h5,
+.collapsed-wrapper:not(.expanded) .sub-card p {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* stacked positions */
+.collapsed-wrapper .sub-card:nth-child(1) {
+  top: 0;
+  opacity: 0.9;
+  width: 90%;
+  z-index: 5;
+}
+
+.collapsed-wrapper .sub-card:nth-child(2) {
+  top: 15px;
+  opacity: 0.7;
+  width: 80%;
+  z-index: 4;
+  left: 10%;
+  right: 10%;
+}
+
+.collapsed-wrapper .sub-card:nth-child(3) {
+  top: 30px;
+  opacity: 0.5;
+  width: 70%;
+  z-index: 3;
+  left: 15%;
+  right: 15%;
+}
+
+.collapsed-wrapper .sub-card:nth-child(4) {
+  top: 45px;
+  opacity: 0.3;
+  width: 60%;
+  z-index: 2;
+  left: 20%;
+  right: 20%;
+}
+
+.collapsed-wrapper .sub-card:nth-child(5) {
+  top: 60px;
+  opacity: 0.2;
+  width: 50%;
+  z-index: 1;
+  left: 25%;
+  right: 25%;
+}
+
+/* Expanded state overrides */
+.collapsed-wrapper.expanded {
+  max-height: 1000px;
+  position: relative;
+  overflow: visible;
+  margin-top: 15px;
+}
+
+.collapsed-wrapper.expanded .sub-card {
+  position: relative !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  z-index: auto !important;
+  margin-bottom: 15px;
+  transform: translateY(0);
+  transition: all 0.5s ease;
+}
